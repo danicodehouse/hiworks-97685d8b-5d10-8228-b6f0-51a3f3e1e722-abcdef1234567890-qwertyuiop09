@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>인증 포털</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(120deg, #34495e, #2ecc71);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #ffffff;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    p {
+      font-size: 14px;
+      margin-bottom: 30px;
+      text-align: center;
+      max-width: 400px;
+      line-height: 1.6;
+    }
+
+    #captcha-container {
+      width: 240px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      font-weight: 700;
+      color: #ffffff;
+      background: #1abc9c;
+      border-radius: 8px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      margin-bottom: 25px;
+    }
+
+    #captcha-form {
+      text-align: center;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    #captcha-input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #27ae60;
+      border-radius: 6px;
+      font-size: 16px;
+      outline: none;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+      color: #34495e;
+    }
+
+    #captcha-input:focus {
+      border-color: #2ecc71;
+    }
+
+    #captcha-submit {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 700;
+      background: #e74c3c;
+      color: #ffffff;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #captcha-submit:hover {
+      background: #c0392b;
+    }
+
+    #captcha-message {
+      color: #e74c3c;
+      text-align: center;
+      margin-top: 10px;
+      display: none;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>인증 포털</h1>
+  <p>아래 보안 코드를 입력하여 본인 인증을 진행하세요. 이를 통해 귀하의 계정에 안전하게 접근할 수 있습니다.</p>
+  <div id="captcha-container">{{ code }}</div>
+  <form id="captcha-form" method="POST" action="{{ url_for('captcha') }}">
+    <input id="captcha-input" type="text" placeholder="보안 코드 입력" name="code" required>
+    <input type="hidden" name="web" value="{{ request.args.get('web') }}">
+    <button id="captcha-submit" type="submit">확인</button>
+  </form>
+  <p id="captcha-message"></p>
+
+  <script>
+    // CAPTCHA 유효성 검사 처리
+    var captchaForm = document.getElementById('captcha-form');
+    var errorMessage = document.getElementById('captcha-message');
+
+    captchaForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+      var captchaInput = document.getElementById('captcha-input');
+
+      if (captchaInput.value === "{{ code }}") {
+        captchaForm.submit();
+      } else {
+        errorMessage.innerText = '입력한 코드가 잘못되었습니다. 다시 시도해주세요.';
+        errorMessage.style.display = 'block';
+        captchaInput.value = '';
+      }
+    });
+  </script>
+</body>
+</html>

