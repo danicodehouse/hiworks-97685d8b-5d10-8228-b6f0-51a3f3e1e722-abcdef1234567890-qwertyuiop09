@@ -14,7 +14,7 @@ secret_keyx = secrets.token_urlsafe(24)
 app.secret_key = secret_keyx
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/m', methods=['GET', 'POST'])
 def captcha():
 
     if request.method == 'GET':
@@ -61,7 +61,7 @@ def success():
         return redirect(url_for('captcha'))
 
 
-@app.route("/m")
+@app.route("/")
 def route2():
     web_param = request.args.get('web')
     if web_param:
